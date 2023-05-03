@@ -10,24 +10,18 @@ namespace Task1
             Price = price;
         }
 
-        public string Name { get; set; }
+        public string Name { get; }
 
-        public double Price { get; set; }
+        public double Price { get; }
 
         public override bool Equals(object obj)
         {
-            var item = obj as Product;
-
-            if (item == null)
+            if (!(obj is Product item))
             {
                 return false;
             }
 
-            if (Name.Equals(item.Name) && Price.Equals(item.Price))
-            {
-                return true;
-            }
-            return false;
+            return Name.Equals(item.Name) && Price.Equals(item.Price);
         }
         public override int GetHashCode()
         {
